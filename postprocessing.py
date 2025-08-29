@@ -7,7 +7,7 @@ from feedgen.feed import FeedGenerator
 #from tiktokapipy.api import TikTokAPI
 from TikTokApi import TikTokApi
 import config
-from playwright.async_api import async_playwright, Playwright, webkit
+from playwright.async_api import async_playwright, Playwright
 from pathlib import Path
 from urllib.parse import urlparse
 
@@ -104,4 +104,5 @@ async def user_videos():
 
 if __name__ == "__main__":
     asyncio.run(user_videos())
+
 
