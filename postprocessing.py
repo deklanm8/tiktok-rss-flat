@@ -7,7 +7,7 @@ from feedgen.feed import FeedGenerator
 #from tiktokapipy.api import TikTokAPI
 from TikTokApi import TikTokApi
 import config
-from playwright.async_api import async_playwright, Playwright
+from playwright.async_api import async_playwright, Playwright, webkit
 from pathlib import Path
 from urllib.parse import urlparse
 
@@ -23,7 +23,7 @@ ms_token = os.environ.get(
 
 async def runscreenshot(playwright: Playwright, url, screenshotpath):
     chromium = playwright.chromium # or "firefox" or "webkit".
-    browser = await chromium.launch()
+    browser = await chromium.launch(headless=False) 
     page = await browser.new_page()
     await page.goto(url)
     # Save the screenshot
@@ -104,3 +104,4 @@ async def user_videos():
 
 if __name__ == "__main__":
     asyncio.run(user_videos())
+
